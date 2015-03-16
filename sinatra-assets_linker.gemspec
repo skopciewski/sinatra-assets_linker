@@ -1,13 +1,13 @@
 # coding: utf-8
 
-require './lib/assets_linker/version'
+require './lib/sinatra-assets_linker/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'sinatra-assets_linker'
-  spec.version       = AssetsLinker::VERSION
+  spec.version       = SinatraAssetsLinker::VERSION
   spec.authors       = ['Szymon Kopciewski']
   spec.email         = 's.kopciewski@gmail.com'
-  spec.summary       = ''
+  spec.summary       = 'A Sinatra extension of helpers for static assets.'
   spec.description   = ''
   spec.homepage      = 'https://github.com/skopciewski/sinatra-assets_linker'
   spec.license       = 'GPL-3.0'
@@ -16,8 +16,11 @@ Gem::Specification.new do |spec|
                        %w(Gemfile LICENSE README.md CHANGELOG.md)
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency 'sinatra', '>=1.4'
+
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rspec-given'
+  spec.add_development_dependency 'rack-test'
 
 end
