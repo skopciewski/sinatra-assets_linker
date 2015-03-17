@@ -6,7 +6,19 @@ module Sinatra
     def css_uri(file_name)
       cdn_url = get_settings(:cdn_url)
       css_dir = get_settings(:css_dir, 'stylesheets')
-      generate_uri cdn_url, css_dir, file_name
+      generate_uri(cdn_url, css_dir, file_name)
+    end
+
+    def js_uri(file_name)
+      cdn_url = get_settings(:cdn_url)
+      js_dir = get_settings(:js_dir, 'javascripts')
+      generate_uri(cdn_url, js_dir, file_name)
+    end
+
+    def img_uri(file_name)
+      cdn_url = get_settings(:cdn_url)
+      img_dir = get_settings(:img_dir, 'images')
+      generate_uri(cdn_url, img_dir, file_name)
     end
 
     private
@@ -17,7 +29,7 @@ module Sinatra
 
     def generate_uri(cdn_url, assets_dir, file_name)
       absolute_path = false
-      relative_url = uri File.join(assets_dir, file_name), absolute_path
+      relative_url = uri(File.join(assets_dir, file_name), absolute_path)
       return File.join(cdn_url, relative_url) unless cdn_url.nil?
       relative_url
     end
