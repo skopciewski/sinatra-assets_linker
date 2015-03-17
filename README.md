@@ -1,5 +1,8 @@
 # Sinatra AssetsLinker Helper
 
+[![Gem Version](https://badge.fury.io/rb/sinatra-assets_linker)](http://badge.fury.io/rb/sinatra-assets_linker)
+
+
 Provided methods:
 * `css_uri(file_name, add_script_name = true)`
 * `js_uri(file_name, add_script_name = true)`
