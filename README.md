@@ -1,6 +1,6 @@
 # Sinatra AssetsLinker Helper
 
-[![Gem Version](https://badge.fury.io/rb/sinatra-assets_linker)](http://badge.fury.io/rb/sinatra-assets_linker)
+[![Gem Version](https://badge.fury.io/rb/sinatra-assets_linker.svg)](http://badge.fury.io/rb/sinatra-assets_linker)
 
 
 Provided methods:
