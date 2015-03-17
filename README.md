@@ -32,7 +32,7 @@ class MyApp < Sinatra::Base
   helpers Sinatra::AssetsLinker
 
   configure do
-    # define assets dir
+    # define assets dirs
     set :css_dir, 'css_dir'
     set :js_dir, 'js_dir'
     set :img_dir, 'img_dir'
