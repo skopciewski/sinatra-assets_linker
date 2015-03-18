@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Szymon Kopciewski']
   spec.email         = 's.kopciewski@gmail.com'
   spec.summary       = 'The Sinatra helper for the assets links.'
-  spec.description   = 'Provide the methods for generating the assets urls.'
+  spec.description   = 'Provides the methods for generating the assets urls.'
   spec.homepage      = 'https://github.com/skopciewski/sinatra-assets_linker'
   spec.license       = 'GPL-3.0'
 
