@@ -62,6 +62,10 @@ css_uri('file.css')       # -> http://cdn.net/css_dir/file.css
 js_uri('file.js')         # -> http://cdn.net/js_dir/file.js
 img_uri('file.jpg')       # -> http://cdn.net/img_dir/file.jpg
 ```
+## Versioning
+
+See [semver.org][semver]
+
 
 ## Contributing
 
@@ -72,3 +76,4 @@ img_uri('file.jpg')       # -> http://cdn.net/img_dir/file.jpg
 5. Create new Pull Request
 
 [uri]: https://github.com/sinatra/sinatra/blob/master/lib/sinatra/base.rb#L265
+[semver]: http://semver.org/
