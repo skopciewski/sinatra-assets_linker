@@ -1,6 +1,10 @@
 # coding: utf-8
 
-require './lib/sinatra-assets_linker/version'
+begin
+  require './lib/sinatra-assets_linker/version'
+rescue LoadError
+  module SinatraAssetsLinker; VERSION = '0'; end
+end
 
 Gem::Specification.new do |spec|
   spec.name          = 'sinatra-assets_linker'
