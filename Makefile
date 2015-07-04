@@ -1,6 +1,5 @@
 run:
-	docker-compose up -d
-	docker-compose run dev bash
-	docker-compose stop
+	touch Gemfile.lock
+	docker-compose run dev sh
 
 .PHONY: run
