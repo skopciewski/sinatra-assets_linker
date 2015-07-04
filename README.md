@@ -8,8 +8,8 @@ Provided methods:
 * `js_uri(file_name, add_script_name = true)`
 * `img_uri(file_name, add_script_name = true)`
 
-They extend the [`uri`][uri] method from the Sinatra. 
-Always returns relative paths, unless you set `:cdn_url`.
+They extend the [`uri`][uri] method from the Sinatra.
+Always returns relative paths, unless you set `:project_cdn_url`.
 
 ## Installation
 
@@ -36,12 +36,13 @@ class MyApp < Sinatra::Base
 
   configure do
     # define assets dirs
-    set :css_dir, 'css_dir'
-    set :js_dir, 'js_dir'
-    set :img_dir, 'img_dir'
+    set :project_css_dir, 'css_dir'
+    set :project_js_dir, 'js_dir'
+    set :project_img_dir, 'img_dir'
 
     # optionally
-    set :cdn_url, 'http://cdn.net'
+    set :project_cdn_url, 'http://cdn.net'
+    set :project_assets_verbose, true
   end
 
 end
@@ -62,6 +63,21 @@ css_uri('file.css')       # -> http://cdn.net/css_dir/file.css
 js_uri('file.js')         # -> http://cdn.net/js_dir/file.js
 img_uri('file.jpg')       # -> http://cdn.net/img_dir/file.jpg
 ```
+
+## Configuration and defaults
+
+* :project_css_dir [stylesheets]
+* :project_js_dir [javascripts]
+* :project_rjs_dir [js]
+* :project_cdn_url [nil]
+* :project_assets_env [development]
+
+## Requirejs integration
+
+If you compile your javastripts into the other directory, you can set it by
+editing the `:project_rjs_dir` option, and switch loading assets from that
+dir by setting: `project_assets_verbose` to `true`.
+
 ## Versioning
 
 See [semver.org][semver]

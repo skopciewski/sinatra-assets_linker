@@ -17,23 +17,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-require 'sinatra/base'
+require "sinatra/base"
 
 module Sinatra
   module AssetsLinker
-
     def css_uri(file_name, add_script_name = true)
-      css_dir = get_settings(:css_dir, 'stylesheets')
+      css_dir = get_settings(:project_css_dir, "stylesheets")
       generate_uri(css_dir, file_name, add_script_name)
     end
 
     def js_uri(file_name, add_script_name = true)
-      js_dir = get_settings(:js_dir, 'javascripts')
-      generate_uri(js_dir, file_name, add_script_name)
+      js_dir = get_settings(:project_js_dir, "javascripts")
+      rjs_dir = get_settings(:project_rjs_dir, "js")
+      choosen_dir = get_settings(:project_assets_verbose, false) ? rjs_dir : js_dir
+      generate_uri(choosen_dir, file_name, add_script_name)
     end
 
     def img_uri(file_name, add_script_name = true)
-      img_dir = get_settings(:img_dir, 'images')
+      img_dir = get_settings(:project_img_dir, "images")
       generate_uri(img_dir, file_name, add_script_name)
     end
 
@@ -46,10 +47,9 @@ module Sinatra
     def generate_uri(assets_dir, file_name, add_script_name)
       absolute_path = false
       relative_url = uri(File.join(assets_dir, file_name), absolute_path, add_script_name)
-      cdn_url = get_settings(:cdn_url)
+      cdn_url = get_settings(:project_cdn_url)
       return File.join(cdn_url, relative_url) unless cdn_url.nil?
       relative_url
     end
-
   end
 end

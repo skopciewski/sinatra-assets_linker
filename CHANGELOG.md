@@ -1,3 +1,8 @@
+=== 2.0.0 (2015.07.04)
+
+* rename settings variables
+* add configs to integrate r.js outputs into js_uri
+
 === 1.0.5 (2015.07.01)
 
 * refactor
