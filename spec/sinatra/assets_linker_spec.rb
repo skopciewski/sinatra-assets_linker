@@ -56,19 +56,19 @@ module Sinatra
       When { get("/get_js") }
       Invariant { last_response.ok? }
 
-      context "without js dir" do
+      context "without rjs dir" do
         Given { app.configure { |c| c.set :project_cdn_url, nil } }
         Then { last_response.body == File.join("/", "js", js_file) }
       end
 
-      context "with js_dir" do
-        Given { app.configure { |c| c.set :project_js_dir, js_dir } }
-        Then { last_response.body == File.join("/", js_dir, js_file) }
+      context "with rjs_dir" do
+        Given { app.configure { |c| c.set :project_rjs_dir, rjs_dir } }
+        Then { last_response.body == File.join("/", rjs_dir, js_file) }
       end
 
       context "with cdn_url" do
         Given { app.configure { |c| c.set :project_cdn_url, cdn } }
-        Then { last_response.body == File.join(cdn, js_dir, js_file) }
+        Then { last_response.body == File.join(cdn, rjs_dir, js_file) }
       end
 
       context "with verbose assets enabled" do
@@ -77,14 +77,14 @@ module Sinatra
         Then { last_response.body == File.join("/", "javascripts", js_file) }
       end
 
-      context "with verbose assets enabled and rjs_dir" do
-        Given { app.configure { |c| c.set :project_rjs_dir, rjs_dir } }
-        Then { last_response.body == File.join("/", rjs_dir, js_file) }
+      context "with verbose assets enabled and js_dir" do
+        Given { app.configure { |c| c.set :project_js_dir, js_dir } }
+        Then { last_response.body == File.join("/", js_dir, js_file) }
       end
 
       context "with verbose assets enabled and cdn_url" do
         Given { app.configure { |c| c.set :project_cdn_url, cdn } }
-        Then { last_response.body == File.join(cdn, rjs_dir, js_file) }
+        Then { last_response.body == File.join(cdn, js_dir, js_file) }
       end
     end
 

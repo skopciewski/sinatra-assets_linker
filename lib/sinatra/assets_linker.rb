@@ -27,9 +27,9 @@ module Sinatra
     end
 
     def js_uri(file_name, add_script_name = true)
-      js_dir = get_settings(:project_js_dir, "js")
-      rjs_dir = get_settings(:project_rjs_dir, "javascripts")
-      choosen_dir = get_settings(:project_assets_verbose, false) ? rjs_dir : js_dir
+      js_dir = get_settings(:project_js_dir, "javascripts")
+      rjs_dir = get_settings(:project_rjs_dir, "js")
+      choosen_dir = get_settings(:project_assets_verbose, false) ? js_dir : rjs_dir
       generate_uri(choosen_dir, file_name, add_script_name)
     end
 
