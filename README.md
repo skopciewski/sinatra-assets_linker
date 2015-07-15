@@ -67,10 +67,10 @@ img_uri('file.jpg')       # -> http://cdn.net/img_dir/file.jpg
 ## Configuration and defaults
 
 * :project_css_dir [stylesheets]
-* :project_js_dir [javascripts]
+* :project_js_dir [javastripts]
 * :project_rjs_dir [js]
 * :project_cdn_url [nil]
-* :project_assets_env [development]
+* :project_assets_verbose [false]
 
 ## Requirejs integration
 
