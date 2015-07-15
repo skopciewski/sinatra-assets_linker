@@ -58,7 +58,7 @@ module Sinatra
 
       context "without js dir" do
         Given { app.configure { |c| c.set :project_cdn_url, nil } }
-        Then { last_response.body == File.join("/", "javascripts", js_file) }
+        Then { last_response.body == File.join("/", "js", js_file) }
       end
 
       context "with js_dir" do
@@ -74,7 +74,7 @@ module Sinatra
       context "with verbose assets enabled" do
         Given { app.configure { |c| c.set :project_cdn_url, nil } }
         Given { app.configure { |c| c.set :project_assets_verbose, true } }
-        Then { last_response.body == File.join("/", "js", js_file) }
+        Then { last_response.body == File.join("/", "javascripts", js_file) }
       end
 
       context "with verbose assets enabled and rjs_dir" do
