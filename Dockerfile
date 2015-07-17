@@ -1,3 +1,3 @@
-FROM skopciewski/gem-dev:onbuild
+FROM skopciewski/gemdev:onbuild
 
 CMD ["sh"]
