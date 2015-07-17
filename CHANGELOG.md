@@ -1,3 +1,7 @@
+=== 2.0.2 (2015.07.17)
+
+* docker ref
+
 === 2.0.1 (2015.07.15)
 
 * assets verbose points to javascripts dir, not to js dir
