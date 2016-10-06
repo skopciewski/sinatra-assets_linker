@@ -1,3 +1,9 @@
+=== 3.0.0 (2016.10.06)
+
+* use minitest instead of rspec
+* add additional class for configuration
+* refactoring and cleanup
+
 === 2.0.2 (2015.07.17)
 
 * docker ref

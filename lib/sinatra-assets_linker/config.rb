@@ -17,5 +17,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-require "sinatra/assets_linker"
-require "sinatra-assets_linker/config"
+require "piko_model"
+
+module SinatraAssetsLinker
+  class Config < PikoModel::Model
+    field "project_css_dir", default: "stylesheets"
+    field "project_javascripts_dir", default: "javascripts"
+    field "project_js_compressed_dir", default: "js"
+    field "project_images_dir", default: "images"
+    field "project_assets_verbose", default: false
+    field "project_cdn_url", default: nil
+  end
+end

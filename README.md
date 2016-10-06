@@ -25,7 +25,24 @@ Or install it yourself as:
 
     $ gem install sinatra-assets_linker
 
+## Configuration
+
+Through `SinatraAssetsLinker::Config` class:
+
+```ruby
+config = SinatraAssetsLinker::Config.new(
+  "project_css_dir" => "css_dir"                    # default: "stylesheets"
+  "project_javascripts_dir" => "js_dir"             # default: "javascripts"
+  "project_js_compressed_dir" => "cjs_dir"          # default: "js"
+  "project_images_dir" => "img_dir"                 # default: "images"
+  "project_assets_verbose" => true                  # default: false
+  "project_cdn_url" => "http://cdn.net"             # default: nil
+)
+```
+
 ## Usage
+
+Above methods look for configuration under: `settings.assets_linker_config`, so:
 
 ```ruby
 require 'sinatra/base'
@@ -35,16 +52,8 @@ class MyApp < Sinatra::Base
   helpers Sinatra::AssetsLinker
 
   configure do
-    # define assets dirs
-    set :project_css_dir, 'css_dir'
-    set :project_js_dir, 'js_dir'
-    set :project_img_dir, 'img_dir'
-
-    # optionally
-    set :project_cdn_url, 'http://cdn.net'
-    set :project_assets_verbose, true
+    set :assets_linker_config, SinatraAssetsLinker::Config.new(ENV.to_h)
   end
-
 end
 ```
 
@@ -56,7 +65,7 @@ js_uri('file.js')         # -> /js_dir/file.js
 img_uri('file.jpg')       # -> /img_dir/file.jpg
 ```
 
-if you set `:cdn_url` before, you get:
+if you set `"project_cdn_url"` before, you get:
 
 ```ruby
 css_uri('file.css')       # -> http://cdn.net/css_dir/file.css
@@ -64,19 +73,10 @@ js_uri('file.js')         # -> http://cdn.net/js_dir/file.js
 img_uri('file.jpg')       # -> http://cdn.net/img_dir/file.jpg
 ```
 
-## Configuration and defaults
+## Assets verbose
 
-* :project_css_dir [stylesheets]
-* :project_js_dir [javastripts]
-* :project_rjs_dir [js]
-* :project_cdn_url [nil]
-* :project_assets_verbose [false]
-
-## Requirejs integration
-
-If you compile your javastripts into the other directory, you can set it by
-editing the `:project_rjs_dir` option, and switch loading assets from that
-dir by setting: `project_assets_verbose` to `true`.
+If you set `"project_assets_verbose"` to `true`, then the `js_uri` method will
+use `project_javascripts_dir` instead of `project_js_compressed_dir`
 
 ## Versioning
 
