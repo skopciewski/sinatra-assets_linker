@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# Copyright (C) 2015 Szymon Kopciewski
+# Copyright (C) 2015,2016 Szymon Kopciewski
 #
 # This file is part of SinatraAssetsLinker.
 #
@@ -18,5 +18,5 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 module SinatraAssetsLinker
-  VERSION = "2.0.2"
+  VERSION = "2.0.2".freeze
 end
