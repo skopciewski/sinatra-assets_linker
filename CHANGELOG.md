@@ -1,3 +1,7 @@
+=== 3.0.1 (2016.10.24)
+
+* helper functions now have `absolute` attribute to be compatible with `Sinatra::uri` function
+
 === 3.0.0 (2016.10.06)
 
 * use minitest instead of rspec

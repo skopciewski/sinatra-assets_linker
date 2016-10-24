@@ -21,21 +21,21 @@ require "sinatra/base"
 
 module Sinatra
   module AssetsLinker
-    def css_uri(file_name, add_script_name = true)
+    def css_uri(file_name, absolute = true, add_script_name = true)
       css_dir = get_settings(:project_css_dir)
-      generate_uri(css_dir, file_name, add_script_name)
+      generate_uri(css_dir, file_name, absolute, add_script_name)
     end
 
-    def js_uri(file_name, add_script_name = true)
+    def js_uri(file_name, absolute = true, add_script_name = true)
       javascript_dir = get_settings(:project_javascripts_dir)
       js_dir = get_settings(:project_js_compressed_dir)
       choosen_dir = get_settings(:project_assets_verbose) ? javascript_dir : js_dir
-      generate_uri(choosen_dir, file_name, add_script_name)
+      generate_uri(choosen_dir, file_name, absolute, add_script_name)
     end
 
-    def img_uri(file_name, add_script_name = true)
+    def img_uri(file_name, absolute = true, add_script_name = true)
       img_dir = get_settings(:project_images_dir)
-      generate_uri(img_dir, file_name, add_script_name)
+      generate_uri(img_dir, file_name, absolute, add_script_name)
     end
 
     private
@@ -44,12 +44,15 @@ module Sinatra
       settings.assets_linker_config.fetch(key.to_s)
     end
 
-    def generate_uri(assets_dir, file_name, add_script_name)
-      absolute_path = false
-      relative_url = uri(File.join(assets_dir, file_name), absolute_path, add_script_name)
+    def generate_uri(assets_dir, file_name, absolute, add_script_name)
       cdn_url = get_settings(:project_cdn_url)
-      return File.join(cdn_url, relative_url) unless cdn_url.nil?
-      relative_url
+      relative_url = File.join(assets_dir, file_name)
+      if cdn_url.nil? || cdn_url == ""
+        uri(relative_url, absolute, add_script_name)
+      else
+        uri(relative_url, false, add_script_name)
+        File.join(cdn_url, relative_url)
+      end
     end
   end
 end
