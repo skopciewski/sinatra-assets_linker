@@ -42,7 +42,7 @@ class AssetsLinkerTest < Minitest::Test
   def test_default_css_path
     app.configure { |c| c.set :assets_linker_config, @config }
     get("/get_css")
-    expected_path = File.join("/", @config["project_css_dir"], "file.css")
+    expected_path = File.join("http://example.org", @config["project_css_dir"], "file.css")
     assert_equal expected_path, last_response.body
   end
 
@@ -64,7 +64,7 @@ class AssetsLinkerTest < Minitest::Test
   def test_default_img_path
     app.configure { |c| c.set :assets_linker_config, @config }
     get("/get_img")
-    expected_path = File.join("/", @config["project_images_dir"], "file.jpg")
+    expected_path = File.join("http://example.org", @config["project_images_dir"], "file.jpg")
     assert_equal expected_path, last_response.body
   end
 
@@ -86,7 +86,9 @@ class AssetsLinkerTest < Minitest::Test
   def test_default_js_path
     app.configure { |c| c.set :assets_linker_config, @config }
     get("/get_js")
-    expected_path = File.join("/", @config["project_js_compressed_dir"], "file.js")
+    expected_path = File.join(
+      "http://example.org", @config["project_js_compressed_dir"], "file.js"
+    )
     assert_equal expected_path, last_response.body
   end
 
@@ -102,7 +104,9 @@ class AssetsLinkerTest < Minitest::Test
   def test_verbose_js_path
     app.configure { |c| c.set :assets_linker_config, @config_verbose }
     get("/get_js")
-    expected_path = File.join("/", @config_verbose["project_javascripts_dir"], "file.js")
+    expected_path = File.join(
+      "http://example.org", @config_verbose["project_javascripts_dir"], "file.js"
+    )
     assert_equal expected_path, last_response.body
   end
 
