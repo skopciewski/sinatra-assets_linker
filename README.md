@@ -1,6 +1,8 @@
 # Sinatra AssetsLinker Helper
 
 [![Gem Version](https://badge.fury.io/rb/sinatra-assets_linker.svg)](http://badge.fury.io/rb/sinatra-assets_linker)
+[![Code Climate](https://codeclimate.com/github/skopciewski/sinatra-assets_linker/badges/gpa.svg)](https://codeclimate.com/github/skopciewski/sinatra-assets_linker)
+[![Dependency Status](https://gemnasium.com/badges/github.com/skopciewski/sinatra-assets_linker.svg)](https://gemnasium.com/github.com/skopciewski/sinatra-assets_linker)
 
 
 Provided methods:
