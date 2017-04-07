@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 require "sinatra-assets_linker/config"
 
@@ -7,7 +8,7 @@ class ConfigTest < Minitest::Test
   end
 
   def test_default_config_is_valid
-    assert_equal true, @config.valid?
+    assert @config.valid?
   end
 
   def test_configuration_has_default_project_css_dir_value
@@ -27,10 +28,10 @@ class ConfigTest < Minitest::Test
   end
 
   def test_configuration_has_default_project_assets_verbose_value
-    assert_equal false, @config.fetch("project_assets_verbose")
+    refute @config.fetch("project_assets_verbose")
   end
 
   def test_configuration_has_default_project_cdn_url_value
-    assert_equal nil, @config.fetch("project_cdn_url")
+    assert_nil @config.fetch("project_cdn_url")
   end
 end
