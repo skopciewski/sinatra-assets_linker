@@ -1,9 +1,9 @@
-# coding: utf-8
+# frozen_string_literal: true
 
 begin
   require "./lib/sinatra-assets_linker/version"
 rescue LoadError
-  module SinatraAssetsLinker; VERSION = "0".freeze; end
+  module SinatraAssetsLinker; VERSION = "0"; end
 end
 
 Gem::Specification.new do |spec|
@@ -21,12 +21,13 @@ Gem::Specification.new do |spec|
                        %w(Gemfile LICENSE README.md CHANGELOG.md)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
-  spec.add_runtime_dependency "sinatra", ">=1.4"
+  spec.add_runtime_dependency "sinatra", "~>1", ">=1.4"
   spec.add_runtime_dependency "piko_model", "~>1"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "minitest-reporters"
   spec.add_development_dependency "rack-test"
+  spec.add_development_dependency "simplecov"
   spec.add_development_dependency "codeclimate-test-reporter"
 end
