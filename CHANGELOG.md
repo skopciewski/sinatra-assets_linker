@@ -1,3 +1,7 @@
+### 3.1.0 (2017.05.11)
+
+* update sinatra gem to v2.0
+
 ### 3.0.2 (2017.04.07)
 
 * travis integration
